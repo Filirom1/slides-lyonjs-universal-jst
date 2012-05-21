@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <title>Getting Started with deck.js</title>
+  
+  <meta name="description" content="A jQuery library for modern HTML presentations">
+  <meta name="author" content="Caleb Troughton">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+  
+  <!-- Core and extension CSS files -->
+  <link rel="stylesheet" href="../core/deck.core.css">
+  <link rel="stylesheet" href="../extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../extensions/status/deck.status.css">
+  <link rel="stylesheet" href="../extensions/hash/deck.hash.css">
+  <link rel="stylesheet" href="../extensions/scale/deck.scale.css">
+  
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" href="../themes/style/mnml.css">
+  
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
+  
+  <script src="../modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides -->
+<section class="slide" id="title-slide">
+  <h1>5 slides and one demo</h1>
+</section>
+
+<style type="text/css">
+  #template .col{
+    width: 33%;
+    display: inline-block;
+  }
+</style>
+<section class="slide" id="template">
+  <h2>Write templates in html files</h2>
+  <div class="col">
+    <img src="jst/simple.png">
+    <pre>./template/simple.hbs</pre>
+  </div>
+  <div class="col">
+    <img src="jst/helpers.png">
+    <pre>./template/helpers.hbs</pre>
+  </div>
+  <div class="col">
+    <img src="jst/partials.png">
+    <pre>./template/partials.hbs</pre>
+  </div>
+  <pre class="slide">
+    <code>
+$ tree templates
+templates
+├── helpers.hbs
+├── multiple.hbs
+├── partials.hbs
+├── plain.hbs
+├── sample.hbs
+└── subfolder
+    └── subsub
+        ├── _sample.hbs
+        └── sample.hbs
+
+2 directories, 7 files
+    </code>
+  </pre>
+</section>
+
+<section class="slide" id="markup">
+  <h2>Use Universal-JST</h2>
+  <pre class="slide"><code>$ npm install -g universal-jst </code> </pre>
+  <pre class="slide"><code>$ jst --verbose --template handlebars ./templates/ ./templates.js </code> </pre>
+  <pre class="slide"><code>Use template format : handlebars
+Read dir: templates
+--->	Skip subfolder
+--->	Skip subfolder/subsub
+Building window.JST["helpers"]
+Building window.JST["multiple"]
+Building window.JST["partials"]
+Building window.JST["plain"]
+Building window.JST["sample"]
+Building window.JST["subfolder/subsub/_sample"]
+Building window.JST["subfolder/subsub/sample"]
+templates.js written.
+ </code> </pre>
+  <div class="slide">
+    <img src="jst/html.png">
+  </div>
+</section>
+
+<section class="slide" id="themes">
+  <h2>Use it in your browser</h2>
+
+  <div class="slide">
+    <img src="jst/window.jst.png">
+  </div>
+  <pre class="slide">
+    <code>
+window.JST.sample({title: 'foobar'})
+"&lt;h1&gt;foobar&lt;h1/&gt;"
+</code>
+  </pre>
+</section>
+
+<section class="slide" id="extensions">
+  <h2>Demo</h2>
+</section>
+
+<section class="slide" id="nested">
+  <h2>Universal-JST</h2>
+  <p class="slide">
+    By <a href="https://github.com/wookiehangover">@wookiehangover</a> and <a href="https://github.com/Filirom1">@Filirom1</a>
+  </p>
+  <div class="slide">
+    Supports
+    <ul>
+      <li><a href="http://handlebarsjs.com/">handlebars</a></li>
+      <li><a href="http://api.jquery.com/jquery.tmpl/">jquery-tmpl</a></li>
+      <li><a href="http://documentcloud.github.com/underscore/#template">underscore</a></li>
+      <li><a href="http://akdubya.github.com/dustjs/">dust</a></li>
+      <li><a href="http://twitter.github.com/hogan.js/">mustache with hogan</a></li>
+      <li>string ( useful for svg, or for templates to be compiled later on client side )</li>
+    </ul>
+  </div>
+  <h4 class="slide"><a href="https://github.com/wookiehangover/universal-jst">https://github.com/wookiehangover/universal-jst</a></h4>
+</section>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="../core/deck.core.js"></script>
+<script src="../extensions/hash/deck.hash.js"></script>
+<script src="../extensions/menu/deck.menu.js"></script>
+<script src="../extensions/goto/deck.goto.js"></script>
+<script src="../extensions/status/deck.status.js"></script>
+<script src="../extensions/navigation/deck.navigation.js"></script>
+<script src="../extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+  $.deck('.slide');
+});
+</script>
+
+</body>
+</html>
